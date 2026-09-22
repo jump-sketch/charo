@@ -1,265 +1,656 @@
+<! <html lang="ja">
 <!DOCTYPE html>
-<html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ジャニーズ好き顔選手権</title>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>好き顔9選｜ジュニア × STARTO</title>
+
 
 <style>
+
+/* ==================================================
+   RESET
+================================================== */
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  background: #fff7fb;
-  color: #333;
+  background: #050505;
+  color: #fff;
+
   font-family:
     -apple-system,
     BlinkMacSystemFont,
-    "Helvetica Neue",
+    "Noto Sans JP",
     "Hiragino Kaku Gothic ProN",
     "Yu Gothic",
     sans-serif;
 }
 
-button {
-  font-family: inherit;
+
+/* ==================================================
+   HEADER
+================================================== */
+
+.header {
+  height: 78px;
+
+  padding: 15px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #222;
 }
 
-.container {
-  width: 100%;
-  max-width: 600px;
-  margin: auto;
-  padding: 24px 18px 40px;
+.logo strong {
+  display: block;
+
+  color: #0878ff;
+
+  font-size: 22px;
+  font-weight: 900;
 }
 
-/* =========================
-   START
-========================= */
+.logo span {
+  display: block;
 
-#start {
-  text-align: center;
-  padding-top: 60px;
-}
+  margin-top: 2px;
 
-.logo-sub {
   font-size: 11px;
-  letter-spacing: 3px;
-  color: #d58ca9;
-  margin-bottom: 8px;
 }
 
-h1 {
-  font-size: 28px;
-  margin: 0;
-  letter-spacing: 1px;
-}
-
-.description {
-  margin-top: 18px;
-  color: #888;
-  font-size: 13px;
-  line-height: 1.8;
-}
-
-.start-button {
-  margin-top: 35px;
-  width: 80%;
-  max-width: 320px;
-  padding: 17px;
+.search-icon {
+  background: none;
   border: none;
-  border-radius: 999px;
-  background: #e6a2bd;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  box-shadow: 0 8px 20px rgba(210,130,160,.25);
+
+  color: #0878ff;
+
+  font-size: 35px;
+
+  cursor: pointer;
 }
 
-.start-button:active {
-  transform: scale(.96);
+
+/* ==================================================
+   HERO
+================================================== */
+
+.hero {
+  height: 270px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 13% 78%,
+      #f8d42d 0 7%,
+      transparent 7.5%
+    ),
+
+    radial-gradient(
+      circle at 82% 32%,
+      #e9a9ca 0 10%,
+      transparent 10.5%
+    ),
+
+    radial-gradient(
+      circle at 90% 80%,
+      #6dd0cf 0 9%,
+      transparent 9.5%
+    ),
+
+    linear-gradient(
+      135deg,
+      #152d65,
+      #584c7b,
+      #172c63
+    );
 }
 
-/* =========================
-   GAME
-========================= */
 
-#game {
-  display: none;
+/* 星 */
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  opacity: .5;
+
+  background:
+
+    radial-gradient(
+      circle at 8% 20%,
+      white 0 2px,
+      transparent 3px
+    ),
+
+    radial-gradient(
+      circle at 27% 13%,
+      white 0 2px,
+      transparent 3px
+    ),
+
+    radial-gradient(
+      circle at 50% 18%,
+      white 0 2px,
+      transparent 3px
+    ),
+
+    radial-gradient(
+      circle at 73% 11%,
+      white 0 2px,
+      transparent 3px
+    ),
+
+    radial-gradient(
+      circle at 93% 25%,
+      white 0 2px,
+      transparent 3px
+    ),
+
+    radial-gradient(
+      circle at 40% 78%,
+      white 0 2px,
+      transparent 3px
+    );
 }
 
-.progress {
+
+.hero-title {
+  position: relative;
+
+  z-index: 2;
+
   text-align: center;
-  font-size: 12px;
-  color: #aaa;
-  margin-bottom: 15px;
+
+  filter:
+    drop-shadow(4px 4px 0 #000);
 }
 
-.question {
-  text-align: center;
+.hero-main {
+  display: inline-block;
+
+  padding: 6px 20px;
+
+  background: #fff;
+
+  color: #000;
+
+  border: 3px solid #000;
+
+  font-size: 54px;
+
+  font-weight: 1000;
+
+  line-height: 1;
+}
+
+.hero-sub {
+  display: block;
+
+  width: fit-content;
+
+  margin: 5px auto 0;
+
+  padding: 7px 18px;
+
+  background: #f6b4e8;
+
+  color: #111;
+
+  border: 3px solid #0878ff;
+
   font-size: 21px;
-  font-weight: bold;
-  margin-bottom: 20px;
+
+  font-weight: 900;
 }
 
-.cards {
+
+/* ==================================================
+   TABS
+================================================== */
+
+.tabs {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  border-bottom: 2px solid #fff;
 }
 
-.card {
-  background: white;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 5px 18px rgba(0,0,0,.08);
-  transition: transform .15s;
-}
+.tab {
+  height: 60px;
 
-.card:active {
-  transform: scale(.95);
-}
+  background: #050505;
 
-.card img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  background: #eee;
-}
-
-.card-name {
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 11px 5px 3px;
-}
-
-.card-group {
-  text-align: center;
-  color: #999;
-  font-size: 10px;
-  padding-bottom: 12px;
-}
-
-/* =========================
-   RESULT
-========================= */
-
-#result {
-  display: none;
-}
-
-.result-header {
-  text-align: center;
-  margin-bottom: 22px;
-}
-
-.result-header h2 {
-  margin: 5px 0;
-  font-size: 25px;
-}
-
-.result-header p {
-  font-size: 12px;
-  color: #999;
-}
-
-.top9 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-
-.result-card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 3px 10px rgba(0,0,0,.07);
-}
-
-.result-card img {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-}
-
-.rank {
-  text-align: center;
-  color: #d58ca9;
-  font-size: 11px;
-  font-weight: bold;
-  padding-top: 6px;
-}
-
-.result-name {
-  text-align: center;
-  font-size: 13px;
-  font-weight: bold;
-  padding: 4px 2px 10px;
-}
-
-.type-box {
-  background: white;
-  border-radius: 16px;
-  padding: 18px;
-  margin-top: 20px;
-  text-align: center;
-}
-
-.type-title {
-  color: #d58ca9;
-  font-size: 11px;
-  letter-spacing: 2px;
-}
-
-.type-name {
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 5px;
-}
-
-.restart {
-  display: block;
-  width: 80%;
-  margin: 25px auto 10px;
   border: none;
-  border-radius: 999px;
-  padding: 14px;
-  background: #e6a2bd;
-  color: white;
-  font-weight: bold;
+
+  color: #fff;
+
+  font-size: 16px;
+
+  font-weight: 900;
+
+  cursor: pointer;
 }
 
-.share {
+.tab.active {
+  color: #0878ff;
+
+  border-bottom:
+    5px solid #0878ff;
+}
+
+
+/* ==================================================
+   SEARCH
+================================================== */
+
+.search-area {
+  padding: 30px 24px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.member-count {
+  font-size: 16px;
+
+  white-space: nowrap;
+}
+
+.member-count strong {
+  color: #0878ff;
+
+  font-size: 20px;
+}
+
+#searchInput {
+  width: min(430px, 70%);
+
+  padding: 13px 18px;
+
+  background: #050505;
+
+  color: #fff;
+
+  border: 1px solid #fff;
+
+  border-radius: 25px;
+
+  font-size: 15px;
+
+  outline: none;
+}
+
+#searchInput:focus {
+  border-color: #0878ff;
+}
+
+#searchInput::placeholder {
+  color: #888;
+}
+
+
+/* ==================================================
+   MEMBER GRID
+================================================== */
+
+.member-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 25px;
+
+  padding:
+    0 24px
+    60px;
+}
+
+.member-card {
+
+  cursor: pointer;
+
+  transition:
+    transform .2s ease;
+}
+
+.member-card:hover {
+
+  transform:
+    translateY(-4px);
+}
+
+.member-photo {
+
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  overflow: hidden;
+
+  border-radius: 26px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #222,
+      #444
+    );
+
+  display: grid;
+
+  place-items: center;
+
+  color: #888;
+
+  font-size: 12px;
+
+  font-weight: 900;
+}
+
+.member-photo img {
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
   display: block;
-  margin: 10px auto;
-  border: 1px solid #ddd;
-  border-radius: 999px;
-  padding: 12px 22px;
-  background: white;
 }
 
-/* =========================
+.member-name {
+
+  margin-top: 9px;
+
+  font-size: 16px;
+
+  font-weight: 900;
+}
+
+.member-group {
+
+  margin-top: 3px;
+
+  color: #aaa;
+
+  font-size: 12px;
+}
+
+
+/* ==================================================
+   FAVORITE GAME
+================================================== */
+
+.favorite-section {
+
+  padding:
+    50px 24px
+    70px;
+
+  border-top:
+    1px solid #333;
+}
+
+.favorite-section h2 {
+
+  margin: 0;
+
+  text-align: center;
+
+  font-size: 28px;
+}
+
+.favorite-section > p {
+
+  margin:
+    10px 0 30px;
+
+  text-align: center;
+
+  color: #aaa;
+}
+
+.game-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 16px;
+}
+
+.game-card {
+
+  cursor: pointer;
+}
+
+.game-card.selected {
+
+  outline:
+    4px solid #0878ff;
+
+  border-radius: 26px;
+}
+
+.game-card .member-photo {
+
+  border-radius: 26px;
+}
+
+.game-card .member-name {
+
+  text-align: center;
+}
+
+.game-buttons {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 15px;
+
+  margin-top: 30px;
+}
+
+.game-buttons button,
+.reset-button {
+
+  padding:
+    12px 25px;
+
+  border: none;
+
+  border-radius: 25px;
+
+  background: #0878ff;
+
+  color: #fff;
+
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+
+/* ==================================================
+   RESULT
+================================================== */
+
+.result-section {
+
+  padding:
+    50px 24px
+    70px;
+
+  border-top:
+    1px solid #333;
+}
+
+.result-section h2 {
+
+  margin-bottom: 30px;
+
+  text-align: center;
+
+  font-size: 28px;
+}
+
+.result-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+.reset-button {
+
+  display: block;
+
+  margin:
+    30px auto 0;
+}
+
+
+/* ==================================================
+   FOOTER
+================================================== */
+
+footer {
+
+  padding: 30px;
+
+  border-top:
+    1px solid #222;
+
+  color: #777;
+
+  text-align: center;
+
+  font-size: 11px;
+}
+
+
+/* ==================================================
    MOBILE
-========================= */
+================================================== */
 
-@media (max-width: 380px) {
+@media (max-width: 600px) {
 
-  .container {
-    padding-left: 12px;
-    padding-right: 12px;
+  .header {
+
+    height: 75px;
+
+    padding:
+      14px 20px;
   }
 
-  h1 {
-    font-size: 24px;
+  .hero {
+
+    height: 230px;
   }
 
-  .card-name {
-    font-size: 14px;
+  .hero-main {
+
+    font-size: 45px;
+  }
+
+  .hero-sub {
+
+    font-size: 18px;
+  }
+
+  .search-area {
+
+    padding:
+      25px 16px;
+  }
+
+  #searchInput {
+
+    width: 60%;
+  }
+
+  .member-grid {
+
+    grid-template-columns:
+      repeat(3, 1fr);
+
+    gap: 10px;
+
+    padding:
+      0 16px
+      45px;
+  }
+
+  .member-photo {
+
+    border-radius: 22px;
+  }
+
+  .member-name {
+
+    font-size: 13px;
+  }
+
+  .member-group {
+
+    font-size: 10px;
+  }
+
+  .favorite-section,
+  .result-section {
+
+    padding:
+      45px 16px
+      55px;
+  }
+
+  .game-grid,
+  .result-grid {
+
+    gap: 9px;
+  }
+
+  .game-card .member-photo {
+
+    border-radius: 22px;
   }
 
 }
@@ -270,455 +661,575 @@ h1 {
 
 <body>
 
-<div class="container">
 
+<!-- ==================================================
+     HEADER
+================================================== -->
 
-<!-- =========================
-     START
-========================= -->
+<header class="header">
 
-<section id="start">
+  <div class="logo">
 
-  <div class="logo-sub">
-    FACE CHAMPIONSHIP
+    <strong>
+      好き顔9選
+    </strong>
+
+    <span>
+      JUNIOR × STARTO
+    </span>
+
   </div>
 
-  <h1>
-    ジャニーズ好き顔選手権
-  </h1>
+  <button
+    id="searchButton"
+    class="search-icon">
 
-  <div class="description">
-    現役STARTO＆ジュニアの中から<br>
-    あなたの「好きな顔」を選んでください♡
-    <br><br>
-    最後にあなたの好き顔TOP9が決まります。
-  </div>
+    ⌕
 
-  <button class="start-button" onclick="startGame()">
-    START ♡
   </button>
+
+</header>
+
+
+
+<!-- ==================================================
+     HERO
+================================================== -->
+
+<section class="hero">
+
+  <div class="hero-title">
+
+    <div class="hero-main">
+      好き顔9選
+    </div>
+
+    <div class="hero-sub">
+      ジュニア × STARTO
+    </div>
+
+  </div>
 
 </section>
 
 
-<!-- =========================
+
+<!-- ==================================================
+     TABS
+================================================== -->
+
+<nav class="tabs">
+
+  <button
+    class="tab active"
+    data-filter="all">
+
+    すべて
+
+  </button>
+
+
+  <button
+    class="tab"
+    data-filter="ジュニア">
+
+    ジュニア
+
+  </button>
+
+
+  <button
+    class="tab"
+    data-filter="STARTO">
+
+    STARTO
+
+  </button>
+
+</nav>
+
+
+
+<!-- ==================================================
+     SEARCH
+================================================== -->
+
+<section class="search-area">
+
+  <div class="member-count">
+
+    <strong id="memberCount">
+      0
+    </strong>
+
+    人
+
+  </div>
+
+
+  <input
+    id="searchInput"
+    type="search"
+    placeholder="名前・グループを検索">
+
+</section>
+
+
+
+<!-- ==================================================
+     MEMBER LIST
+================================================== -->
+
+<main>
+
+  <div
+    id="memberGrid"
+    class="member-grid">
+  </div>
+
+</main>
+
+
+
+<!-- ==================================================
      GAME
-========================= -->
+================================================== -->
 
-<section id="game">
+<section class="favorite-section">
 
-  <div class="progress" id="progress">
-    1 / 60
+  <h2>
+    好き顔9選
+  </h2>
+
+  <p id="roundText">
+    6人の中から好きな1人を選んでください
+  </p>
+
+
+  <div
+    id="gameGrid"
+    class="game-grid">
   </div>
 
-  <div class="question">
-    どっちの顔が好き？
-  </div>
 
-  <div class="cards">
+  <div class="game-buttons">
 
-    <div class="card" onclick="choose(0)">
+    <button id="prevButton">
+      ← 前へ
+    </button>
 
-      <img id="image0">
-
-      <div class="card-name" id="name0">
-      </div>
-
-      <div class="card-group" id="group0">
-      </div>
-
-    </div>
-
-
-    <div class="card" onclick="choose(1)">
-
-      <img id="image1">
-
-      <div class="card-name" id="name1">
-      </div>
-
-      <div class="card-group" id="group1">
-      </div>
-
-    </div>
+    <button id="nextButton">
+      次へ →
+    </button>
 
   </div>
 
 </section>
 
 
-<!-- =========================
+
+<!-- ==================================================
      RESULT
-========================= -->
+================================================== -->
 
-<section id="result">
+<section class="result-section">
 
-  <div class="result-header">
+  <h2>
+    あなたのTOP9 ♡
+  </h2>
 
-    <div class="logo-sub">
-      YOUR RESULT
-    </div>
 
-    <h2>
-      あなたの好き顔TOP9
-    </h2>
-
-    <p>
-      あなたが選んだ結果はこちら♡
-    </p>
-
+  <div
+    id="resultGrid"
+    class="result-grid">
   </div>
 
 
-  <div class="top9" id="top9">
-  </div>
+  <button
+    id="resetButton"
+    class="reset-button">
 
+    最初から
 
-  <div class="type-box">
-
-    <div class="type-title">
-      YOUR FACE TYPE
-    </div>
-
-    <div class="type-name" id="typeName">
-    </div>
-
-  </div>
-
-
-  <button class="restart" onclick="restart()">
-    もう一回やる
-  </button>
-
-
-  <button class="share" onclick="shareX()">
-    𝕏 結果をシェアする
   </button>
 
 </section>
 
-</div>
 
+
+<footer>
+
+  ファン制作の非公式ページ
+
+  <br>
+
+  STARTO ENTERTAINMENTとは無関係です
+
+</footer>
 
 <script>
+const JUNIOR_IMAGE_URL =
+  "https://jr-official.starto.jp/s/jr/page/persons";
 
-/* ==================================================
-   メンバー一覧
-   ==================================================
-
-   ここに人物を追加していくだけでOK。
-
-   imageには画像URLを入れる。
-
-================================================== */
+const STARTO_IMAGE_URL =
+  "https://starto.jp/s/p/search/artist?ima=0818&data=talent";
 
 
 const members = [
 
-  /* ===== Snow Man ===== */
+  /* =========================
+     ジュニア 158人
+  ========================= */
 
   {
-    name: "岩本照",
-    group: "Snow Man",
-    image: ""
+    name: "青木滉平",
+    type: "junior",
+    imageUrl: JUNIOR_IMAGE_URL
+  },
+  {
+    name: "浅井乃我",
+    type: "junior",
+    imageUrl: JUNIOR_IMAGE_URL
+  },
+  {
+    name: "安嶋秀生",
+    type: "junior",
+    imageUrl: JUNIOR_IMAGE_URL
+  },
+  {
+    name: "阿達慶",
+    type: "junior",
+    imageUrl: JUNIOR_IMAGE_URL
+  },
+  {
+    name: "アンダーソンフェニックス",
+    type: "junior",
+    imageUrl: JUNIOR_IMAGE_URL
+  },
+  {
+    name: "猪狩蒼弥",
+    type: "junior",
+    imageUrl: JUNIOR_IMAGE_URL
+  },
+  {
+    name: "壹岐碧",
+    type: "junior",
+    imageUrl: JUNIOR_IMAGE_URL
+  },
+  {
+    name: "池川侑希弥",
+    type: "junior",
+    imageUrl: JUNIOR_IMAGE_URL
   },
 
-  {
-    name: "深澤辰哉",
-    group: "Snow Man",
-    image: ""
-  },
+  /* ……158人すべて同じ形式…… */
+
+
+  /* =========================
+     STARTO
+  ========================= */
 
   {
-    name: "ラウール",
-    group: "Snow Man",
-    image: ""
+    name: "相葉雅紀",
+    type: "starto",
+    imageUrl: STARTO_IMAGE_URL
   },
+  {
+    name: "阿部亮平",
+    type: "starto",
+    group: "Snow Man",
+    imageUrl: STARTO_IMAGE_URL
+  },
+  {
+    name: "有岡大貴",
+    type: "starto",
+    group: "Hey! Say! JUMP",
+    imageUrl: STARTO_IMAGE_URL
+  },
+  {
+    name: "伊野尾慧",
+    type: "starto",
+    group: "Hey! Say! JUMP",
+    imageUrl: STARTO_IMAGE_URL
+  },
+
+  /* ……公式一覧に掲載されている全員…… */
 
   {
     name: "渡辺翔太",
+    type: "starto",
     group: "Snow Man",
-    image: ""
-  },
-
-  {
-    name: "向井康二",
-    group: "Snow Man",
-    image: ""
-  },
-
-  {
-    name: "阿部亮平",
-    group: "Snow Man",
-    image: ""
-  },
-
-  {
-    name: "目黒蓮",
-    group: "Snow Man",
-    image: ""
-  },
-
-  {
-    name: "宮舘涼太",
-    group: "Snow Man",
-    image: ""
-  },
-
-  {
-    name: "佐久間大介",
-    group: "Snow Man",
-    image: ""
-  },
-
-
-  /* ===== SixTONES ===== */
-
-  {
-    name: "ジェシー",
-    group: "SixTONES",
-    image: ""
-  },
-
-  {
-    name: "京本大我",
-    group: "SixTONES",
-    image: ""
-  },
-
-  {
-    name: "松村北斗",
-    group: "SixTONES",
-    image: ""
-  },
-
-  {
-    name: "髙地優吾",
-    group: "SixTONES",
-    image: ""
-  },
-
-  {
-    name: "森本慎太郎",
-    group: "SixTONES",
-    image: ""
-  },
-
-  {
-    name: "田中樹",
-    group: "SixTONES",
-    image: ""
-  },
-
-
-  /* ===== なにわ男子 ===== */
-
-  {
-    name: "西畑大吾",
-    group: "なにわ男子",
-    image: ""
-  },
-
-  {
-    name: "大西流星",
-    group: "なにわ男子",
-    image: ""
-  },
-
-  {
-    name: "道枝駿佑",
-    group: "なにわ男子",
-    image: ""
-  },
-
-  {
-    name: "高橋恭平",
-    group: "なにわ男子",
-    image: ""
-  },
-
-  {
-    name: "長尾謙杜",
-    group: "なにわ男子",
-    image: ""
-  },
-
-  {
-    name: "藤原丈一郎",
-    group: "なにわ男子",
-    image: ""
-  },
-
-  {
-    name: "大橋和也",
-    group: "なにわ男子",
-    image: ""
-  },
-
-
-  /* ===== ACEes ===== */
-
-  {
-    name: "浮所飛貴",
-    group: "ACEes",
-    image: ""
-  },
-
-  {
-    name: "那須雄登",
-    group: "ACEes",
-    image: ""
-  },
-
-  {
-    name: "作間龍斗",
-    group: "ACEes",
-    image: ""
-  },
-
-  {
-    name: "深田竜生",
-    group: "ACEes",
-    image: ""
-  },
-
-  {
-    name: "佐藤龍我",
-    group: "ACEes",
-    image: ""
-  },
-
-
-  /* ===== B&ZAI ===== */
-
-  {
-    name: "橋本涼",
-    group: "B&ZAI",
-    image: ""
-  },
-
-  {
-    name: "本髙克樹",
-    group: "B&ZAI",
-    image: ""
-  },
-
-  {
-    name: "今野大輝",
-    group: "B&ZAI",
-    image: ""
-  },
-
-  {
-    name: "矢花黎",
-    group: "B&ZAI",
-    image: ""
-  },
-
-  {
-    name: "菅田琳寧",
-    group: "B&ZAI",
-    image: ""
-  },
-
-  {
-    name: "鈴木悠仁",
-    group: "B&ZAI",
-    image: ""
-  },
-
-  {
-    name: "稲葉通陽",
-    group: "B&ZAI",
-    image: ""
-  },
-
-
-  /* ===== Howzit ===== */
-
-  {
-    name: "織山尚大",
-    group: "Howzit",
-    image: ""
-  },
-
-  {
-    name: "西村拓哉",
-    group: "Howzit",
-    image: ""
-  },
-
-  {
-    name: "黒田光輝",
-    group: "Howzit",
-    image: ""
-  },
-
-  {
-    name: "檜山光成",
-    group: "Howzit",
-    image: ""
-  },
-
-  {
-    name: "ヴァサイェガ渉",
-    group: "Howzit",
-    image: ""
+    imageUrl: STARTO_IMAGE_URL
   }
 
 ];
-
-
-/* ==================================================
-   ゲーム設定
-================================================== */
-
-let current = [];
-
-let scores = {};
-
-let questionNumber = 0;
-
-const TOTAL_QUESTIONS = 60;
-
+</script>
 
 /* ==================================================
-   START
+   FILTER
 ================================================== */
 
-function startGame() {
+let currentFilter = "all";
 
-  document.getElementById("start").style.display = "none";
-
-  document.getElementById("game").style.display = "block";
-
-  document.getElementById("result").style.display = "none";
+let searchWord = "";
 
 
-  scores = {};
 
-  members.forEach(member => {
-    scores[member.name] = 0;
+function getFilteredMembers() {
+
+  return MEMBERS.filter(member => {
+
+    const filterOK =
+      currentFilter === "all" ||
+      member.type === currentFilter;
+
+
+    const text =
+      (
+        member.name +
+        " " +
+        member.group
+      ).toLowerCase();
+
+
+    const searchOK =
+      text.includes(
+        searchWord.toLowerCase()
+      );
+
+
+    return filterOK && searchOK;
+
   });
-
-
-  questionNumber = 0;
-
-  nextQuestion();
 
 }
 
 
+
 /* ==================================================
-   次の2人
+   CARD
 ================================================== */
 
-function nextQuestion() {
+function createCard(member) {
 
-  if (
-    questionNumber >= TOTAL_QUESTIONS ||
-    members.length < 2
-  ) {
+  const card =
+    document.createElement("article");
+
+  card.className =
+    "member-card";
+
+
+  const photo =
+    document.createElement("div");
+
+  photo.className =
+    "member-photo";
+
+
+  const img =
+    document.createElement("img");
+
+  img.src =
+    member.image;
+
+  img.alt =
+    member.name;
+
+  img.loading =
+    "lazy";
+
+
+  img.onerror =
+    function() {
+
+      this.style.display =
+        "none";
+
+      photo.textContent =
+        "PHOTO";
+
+    };
+
+
+  photo.appendChild(img);
+
+
+  const name =
+    document.createElement("div");
+
+  name.className =
+    "member-name";
+
+  name.textContent =
+    member.name;
+
+
+  const group =
+    document.createElement("div");
+
+  group.className =
+    "member-group";
+
+  group.textContent =
+    member.type +
+    (
+      member.group
+      ? " / " + member.group
+      : ""
+    );
+
+
+  card.appendChild(photo);
+
+  card.appendChild(name);
+
+  card.appendChild(group);
+
+
+  return card;
+
+}
+
+
+
+/* ==================================================
+   LIST
+================================================== */
+
+function renderMembers() {
+
+  const grid =
+    document.getElementById(
+      "memberGrid"
+    );
+
+
+  grid.innerHTML =
+    "";
+
+
+  const members =
+    getFilteredMembers();
+
+
+  document
+    .getElementById(
+      "memberCount"
+    )
+    .textContent =
+    members.length;
+
+
+  members.forEach(member => {
+
+    grid.appendChild(
+      createCard(member)
+    );
+
+  });
+
+}
+
+
+
+/* ==================================================
+   TABS
+================================================== */
+
+document
+  .querySelectorAll(".tab")
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      function() {
+
+        document
+          .querySelectorAll(".tab")
+          .forEach(tab => {
+
+            tab.classList.remove(
+              "active"
+            );
+
+          });
+
+
+        this.classList.add(
+          "active"
+        );
+
+
+        currentFilter =
+          this.dataset.filter;
+
+
+        renderMembers();
+
+      }
+    );
+
+  });
+
+
+
+/* ==================================================
+   SEARCH
+================================================== */
+
+document
+  .getElementById(
+    "searchInput"
+  )
+  .addEventListener(
+    "input",
+    function() {
+
+      searchWord =
+        this.value;
+
+      renderMembers();
+
+    }
+  );
+
+
+
+/* ==================================================
+   FAVORITE GAME
+================================================== */
+
+let gamePage = 0;
+
+let selectedMember = null;
+
+let winners = [];
+
+
+function renderGame() {
+
+  const grid =
+    document.getElementById(
+      "gameGrid"
+    );
+
+
+  grid.innerHTML =
+    "";
+
+
+  const start =
+    gamePage * 6;
+
+
+  const group =
+    MEMBERS.slice(
+      start,
+      start + 6
+    );
+
+
+  if (group.length === 0) {
 
     showResult();
 
@@ -727,218 +1238,255 @@ function nextQuestion() {
   }
 
 
-  questionNumber++;
+  document
+    .getElementById(
+      "roundText"
+    )
+    .textContent =
+    "6人の中から好きな1人を選んでください";
 
 
-  document.getElementById("progress").innerText =
-    questionNumber + " / " + TOTAL_QUESTIONS;
+  group.forEach(member => {
+
+    const card =
+      createCard(member);
 
 
-  const shuffled = [...members]
-    .sort(() => Math.random() - 0.5);
+    card.className =
+      "game-card";
 
 
-  current = [
-    shuffled[0],
-    shuffled[1]
-  ];
+    if (
+      selectedMember &&
+      selectedMember.name ===
+      member.name
+    ) {
+
+      card.classList.add(
+        "selected"
+      );
+
+    }
 
 
-  showMember(0, current[0]);
+    card.addEventListener(
+      "click",
+      function() {
 
-  showMember(1, current[1]);
+        selectedMember =
+          member;
+
+
+        renderGame();
+
+      }
+    );
+
+
+    grid.appendChild(card);
+
+  });
 
 }
 
 
+
 /* ==================================================
-   人物表示
+   NEXT
 ================================================== */
 
-function showMember(index, member) {
+document
+  .getElementById(
+    "nextButton"
+  )
+  .addEventListener(
+    "click",
+    function() {
 
-  const img =
-    document.getElementById("image" + index);
+      if (!selectedMember) {
 
-  const name =
-    document.getElementById("name" + index);
+        alert(
+          "好きな人を1人選んでください！"
+        );
 
-  const group =
-    document.getElementById("group" + index);
+        return;
 
-
-  name.innerText = member.name;
-
-  group.innerText = member.group;
+      }
 
 
-  if (member.image) {
+      winners.push(
+        selectedMember
+      );
 
-    img.src = member.image;
 
-  } else {
+      selectedMember =
+        null;
 
-    img.src =
-      "https://placehold.co/600x800/f7dce8/777?text="
-      + encodeURIComponent(member.name);
 
-  }
+      gamePage++;
 
-}
+
+      if (
+        gamePage * 6 >=
+        MEMBERS.length
+      ) {
+
+        showResult();
+
+      } else {
+
+        renderGame();
+
+      }
+
+    }
+  );
+
 
 
 /* ==================================================
-   選択
+   PREVIOUS
 ================================================== */
 
-function choose(index) {
+document
+  .getElementById(
+    "prevButton"
+  )
+  .addEventListener(
+    "click",
+    function() {
 
-  const winner = current[index];
+      if (gamePage > 0) {
 
+        gamePage--;
 
-  scores[winner.name]++;
+        selectedMember =
+          null;
 
+        renderGame();
 
-  nextQuestion();
+      }
 
-}
+    }
+  );
+
 
 
 /* ==================================================
-   結果
+   RESULT
 ================================================== */
 
 function showResult() {
 
-  document.getElementById("game").style.display = "none";
-
-  document.getElementById("result").style.display = "block";
-
-
-  const ranking =
-    [...members].sort(
-      (a, b) =>
-        scores[b.name] - scores[a.name]
+  const grid =
+    document.getElementById(
+      "resultGrid"
     );
 
 
+  grid.innerHTML =
+    "";
+
+
   const top9 =
-    ranking.slice(0, 9);
+    winners.slice(-9);
 
 
-  const area =
-    document.getElementById("top9");
+  top9.forEach(member => {
 
-
-  area.innerHTML = "";
-
-
-  top9.forEach((member, index) => {
-
-    const card =
-      document.createElement("div");
-
-
-    card.className =
-      "result-card";
-
-
-    const image =
-      member.image ||
-      "https://placehold.co/600x800/f7dce8/777?text="
-      + encodeURIComponent(member.name);
-
-
-    card.innerHTML = `
-
-      <img src="${image}">
-
-      <div class="rank">
-        ${index + 1}位
-      </div>
-
-      <div class="result-name">
-        ${member.name}
-      </div>
-
-    `;
-
-
-    area.appendChild(card);
+    grid.appendChild(
+      createCard(member)
+    );
 
   });
 
 
-  makeType(top9);
+  document
+    .querySelector(
+      ".result-section"
+    )
+    .scrollIntoView({
+      behavior: "smooth"
+    });
 
 }
+
 
 
 /* ==================================================
-   好き顔タイプ
+   RESET
 ================================================== */
 
-function makeType(top9) {
+document
+  .getElementById(
+    "resetButton"
+  )
+  .addEventListener(
+    "click",
+    function() {
 
-  const types = [
+      gamePage = 0;
 
-    "王道キラキラ顔タイプ ✨",
+      selectedMember = null;
 
-    "色気たっぷり顔タイプ 🖤",
-
-    "少年感強め顔タイプ 🐶",
-
-    "塩顔・透明感タイプ 🤍",
-
-    "かわいい顔タイプ 🎀",
-
-    "大人っぽい顔タイプ 🥀"
-
-  ];
+      winners = [];
 
 
-  const randomType =
-    types[Math.floor(Math.random() * types.length)];
+      renderGame();
 
 
-  document.getElementById("typeName")
-    .innerText = randomType;
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
 
-}
+    }
+  );
+
 
 
 /* ==================================================
-   Xシェア
+   SEARCH BUTTON
 ================================================== */
 
-function shareX() {
+document
+  .getElementById(
+    "searchButton"
+  )
+  .addEventListener(
+    "click",
+    function() {
 
-  const text =
-    "ジャニーズ好き顔選手権やったら、私の好き顔TOP9これだったｗｗｗ";
+      document
+        .getElementById(
+          "searchInput"
+        )
+        .focus();
 
-  const url =
-    "https://twitter.com/intent/tweet?text="
-    + encodeURIComponent(text);
 
+      document
+        .querySelector(
+          ".search-area"
+        )
+        .scrollIntoView({
+          behavior: "smooth"
+        });
 
-  window.open(url, "_blank");
+    }
+  );
 
-}
 
 
 /* ==================================================
-   もう一回
+   START
 ================================================== */
 
-function restart() {
+renderMembers();
 
-  document.getElementById("result").style.display = "none";
-
-  document.getElementById("start").style.display = "block";
-
-}
+renderGame();
 
 </script>
+
 
 </body>
 </html>
