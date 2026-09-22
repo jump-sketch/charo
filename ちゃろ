@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ジャニーズ好き顔選手権</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #fff7fb;
+  color: #333;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Helvetica Neue",
+    "Hiragino Kaku Gothic ProN",
+    "Yu Gothic",
+    sans-serif;
+}
+
+button {
+  font-family: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  padding: 24px 18px 40px;
+}
+
+/* =========================
+   START
+========================= */
+
+#start {
+  text-align: center;
+  padding-top: 60px;
+}
+
+.logo-sub {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #d58ca9;
+  margin-bottom: 8px;
+}
+
+h1 {
+  font-size: 28px;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.description {
+  margin-top: 18px;
+  color: #888;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.start-button {
+  margin-top: 35px;
+  width: 80%;
+  max-width: 320px;
+  padding: 17px;
+  border: none;
+  border-radius: 999px;
+  background: #e6a2bd;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 8px 20px rgba(210,130,160,.25);
+}
+
+.start-button:active {
+  transform: scale(.96);
+}
+
+/* =========================
+   GAME
+========================= */
+
+#game {
+  display: none;
+}
+
+.progress {
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 15px;
+}
+
+.question {
+  text-align: center;
+  font-size: 21px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 5px 18px rgba(0,0,0,.08);
+  transition: transform .15s;
+}
+
+.card:active {
+  transform: scale(.95);
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  background: #eee;
+}
+
+.card-name {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 11px 5px 3px;
+}
+
+.card-group {
+  text-align: center;
+  color: #999;
+  font-size: 10px;
+  padding-bottom: 12px;
+}
+
+/* =========================
+   RESULT
+========================= */
+
+#result {
+  display: none;
+}
+
+.result-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.result-header h2 {
+  margin: 5px 0;
+  font-size: 25px;
+}
+
+.result-header p {
+  font-size: 12px;
+  color: #999;
+}
+
+.top9 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.result-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,.07);
+}
+
+.result-card img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.rank {
+  text-align: center;
+  color: #d58ca9;
+  font-size: 11px;
+  font-weight: bold;
+  padding-top: 6px;
+}
+
+.result-name {
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 4px 2px 10px;
+}
+
+.type-box {
+  background: white;
+  border-radius: 16px;
+  padding: 18px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.type-title {
+  color: #d58ca9;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.type-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.restart {
+  display: block;
+  width: 80%;
+  margin: 25px auto 10px;
+  border: none;
+  border-radius: 999px;
+  padding: 14px;
+  background: #e6a2bd;
+  color: white;
+  font-weight: bold;
+}
+
+.share {
+  display: block;
+  margin: 10px auto;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  padding: 12px 22px;
+  background: white;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 380px) {
+
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .card-name {
+    font-size: 14px;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+<!-- =========================
+     START
+========================= -->
+
+<section id="start">
+
+  <div class="logo-sub">
+    FACE CHAMPIONSHIP
+  </div>
+
+  <h1>
+    ジャニーズ好き顔選手権
+  </h1>
+
+  <div class="description">
+    現役STARTO＆ジュニアの中から<br>
+    あなたの「好きな顔」を選んでください♡
+    <br><br>
+    最後にあなたの好き顔TOP9が決まります。
+  </div>
+
+  <button class="start-button" onclick="startGame()">
+    START ♡
+  </button>
+
+</section>
+
+
+<!-- =========================
+     GAME
+========================= -->
+
+<section id="game">
+
+  <div class="progress" id="progress">
+    1 / 60
+  </div>
+
+  <div class="question">
+    どっちの顔が好き？
+  </div>
+
+  <div class="cards">
+
+    <div class="card" onclick="choose(0)">
+
+      <img id="image0">
+
+      <div class="card-name" id="name0">
+      </div>
+
+      <div class="card-group" id="group0">
+      </div>
+
+    </div>
+
+
+    <div class="card" onclick="choose(1)">
+
+      <img id="image1">
+
+      <div class="card-name" id="name1">
+      </div>
+
+      <div class="card-group" id="group1">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     RESULT
+========================= -->
+
+<section id="result">
+
+  <div class="result-header">
+
+    <div class="logo-sub">
+      YOUR RESULT
+    </div>
+
+    <h2>
+      あなたの好き顔TOP9
+    </h2>
+
+    <p>
+      あなたが選んだ結果はこちら♡
+    </p>
+
+  </div>
+
+
+  <div class="top9" id="top9">
+  </div>
+
+
+  <div class="type-box">
+
+    <div class="type-title">
+      YOUR FACE TYPE
+    </div>
+
+    <div class="type-name" id="typeName">
+    </div>
+
+  </div>
+
+
+  <button class="restart" onclick="restart()">
+    もう一回やる
+  </button>
+
+
+  <button class="share" onclick="shareX()">
+    𝕏 結果をシェアする
+  </button>
+
+</section>
+
+</div>
+
+
+<script>
+
+/* ==================================================
+   メンバー一覧
+   ==================================================
+
+   ここに人物を追加していくだけでOK。
+
+   imageには画像URLを入れる。
+
+================================================== */
+
+
+const members = [
+
+  /* ===== Snow Man ===== */
+
+  {
+    name: "岩本照",
+    group: "Snow Man",
+    image: ""
+  },
+
+  {
+    name: "深澤辰哉",
+    group: "Snow Man",
+    image: ""
+  },
+
+  {
+    name: "ラウール",
+    group: "Snow Man",
+    image: ""
+  },
+
+  {
+    name: "渡辺翔太",
+    group: "Snow Man",
+    image: ""
+  },
+
+  {
+    name: "向井康二",
+    group: "Snow Man",
+    image: ""
+  },
+
+  {
+    name: "阿部亮平",
+    group: "Snow Man",
+    image: ""
+  },
+
+  {
+    name: "目黒蓮",
+    group: "Snow Man",
+    image: ""
+  },
+
+  {
+    name: "宮舘涼太",
+    group: "Snow Man",
+    image: ""
+  },
+
+  {
+    name: "佐久間大介",
+    group: "Snow Man",
+    image: ""
+  },
+
+
+  /* ===== SixTONES ===== */
+
+  {
+    name: "ジェシー",
+    group: "SixTONES",
+    image: ""
+  },
+
+  {
+    name: "京本大我",
+    group: "SixTONES",
+    image: ""
+  },
+
+  {
+    name: "松村北斗",
+    group: "SixTONES",
+    image: ""
+  },
+
+  {
+    name: "髙地優吾",
+    group: "SixTONES",
+    image: ""
+  },
+
+  {
+    name: "森本慎太郎",
+    group: "SixTONES",
+    image: ""
+  },
+
+  {
+    name: "田中樹",
+    group: "SixTONES",
+    image: ""
+  },
+
+
+  /* ===== なにわ男子 ===== */
+
+  {
+    name: "西畑大吾",
+    group: "なにわ男子",
+    image: ""
+  },
+
+  {
+    name: "大西流星",
+    group: "なにわ男子",
+    image: ""
+  },
+
+  {
+    name: "道枝駿佑",
+    group: "なにわ男子",
+    image: ""
+  },
+
+  {
+    name: "高橋恭平",
+    group: "なにわ男子",
+    image: ""
+  },
+
+  {
+    name: "長尾謙杜",
+    group: "なにわ男子",
+    image: ""
+  },
+
+  {
+    name: "藤原丈一郎",
+    group: "なにわ男子",
+    image: ""
+  },
+
+  {
+    name: "大橋和也",
+    group: "なにわ男子",
+    image: ""
+  },
+
+
+  /* ===== ACEes ===== */
+
+  {
+    name: "浮所飛貴",
+    group: "ACEes",
+    image: ""
+  },
+
+  {
+    name: "那須雄登",
+    group: "ACEes",
+    image: ""
+  },
+
+  {
+    name: "作間龍斗",
+    group: "ACEes",
+    image: ""
+  },
+
+  {
+    name: "深田竜生",
+    group: "ACEes",
+    image: ""
+  },
+
+  {
+    name: "佐藤龍我",
+    group: "ACEes",
+    image: ""
+  },
+
+
+  /* ===== B&ZAI ===== */
+
+  {
+    name: "橋本涼",
+    group: "B&ZAI",
+    image: ""
+  },
+
+  {
+    name: "本髙克樹",
+    group: "B&ZAI",
+    image: ""
+  },
+
+  {
+    name: "今野大輝",
+    group: "B&ZAI",
+    image: ""
+  },
+
+  {
+    name: "矢花黎",
+    group: "B&ZAI",
+    image: ""
+  },
+
+  {
+    name: "菅田琳寧",
+    group: "B&ZAI",
+    image: ""
+  },
+
+  {
+    name: "鈴木悠仁",
+    group: "B&ZAI",
+    image: ""
+  },
+
+  {
+    name: "稲葉通陽",
+    group: "B&ZAI",
+    image: ""
+  },
+
+
+  /* ===== Howzit ===== */
+
+  {
+    name: "織山尚大",
+    group: "Howzit",
+    image: ""
+  },
+
+  {
+    name: "西村拓哉",
+    group: "Howzit",
+    image: ""
+  },
+
+  {
+    name: "黒田光輝",
+    group: "Howzit",
+    image: ""
+  },
+
+  {
+    name: "檜山光成",
+    group: "Howzit",
+    image: ""
+  },
+
+  {
+    name: "ヴァサイェガ渉",
+    group: "Howzit",
+    image: ""
+  }
+
+];
+
+
+/* ==================================================
+   ゲーム設定
+================================================== */
+
+let current = [];
+
+let scores = {};
+
+let questionNumber = 0;
+
+const TOTAL_QUESTIONS = 60;
+
+
+/* ==================================================
+   START
+================================================== */
+
+function startGame() {
+
+  document.getElementById("start").style.display = "none";
+
+  document.getElementById("game").style.display = "block";
+
+  document.getElementById("result").style.display = "none";
+
+
+  scores = {};
+
+  members.forEach(member => {
+    scores[member.name] = 0;
+  });
+
+
+  questionNumber = 0;
+
+  nextQuestion();
+
+}
+
+
+/* ==================================================
+   次の2人
+================================================== */
+
+function nextQuestion() {
+
+  if (
+    questionNumber >= TOTAL_QUESTIONS ||
+    members.length < 2
+  ) {
+
+    showResult();
+
+    return;
+
+  }
+
+
+  questionNumber++;
+
+
+  document.getElementById("progress").innerText =
+    questionNumber + " / " + TOTAL_QUESTIONS;
+
+
+  const shuffled = [...members]
+    .sort(() => Math.random() - 0.5);
+
+
+  current = [
+    shuffled[0],
+    shuffled[1]
+  ];
+
+
+  showMember(0, current[0]);
+
+  showMember(1, current[1]);
+
+}
+
+
+/* ==================================================
+   人物表示
+================================================== */
+
+function showMember(index, member) {
+
+  const img =
+    document.getElementById("image" + index);
+
+  const name =
+    document.getElementById("name" + index);
+
+  const group =
+    document.getElementById("group" + index);
+
+
+  name.innerText = member.name;
+
+  group.innerText = member.group;
+
+
+  if (member.image) {
+
+    img.src = member.image;
+
+  } else {
+
+    img.src =
+      "https://placehold.co/600x800/f7dce8/777?text="
+      + encodeURIComponent(member.name);
+
+  }
+
+}
+
+
+/* ==================================================
+   選択
+================================================== */
+
+function choose(index) {
+
+  const winner = current[index];
+
+
+  scores[winner.name]++;
+
+
+  nextQuestion();
+
+}
+
+
+/* ==================================================
+   結果
+================================================== */
+
+function showResult() {
+
+  document.getElementById("game").style.display = "none";
+
+  document.getElementById("result").style.display = "block";
+
+
+  const ranking =
+    [...members].sort(
+      (a, b) =>
+        scores[b.name] - scores[a.name]
+    );
+
+
+  const top9 =
+    ranking.slice(0, 9);
+
+
+  const area =
+    document.getElementById("top9");
+
+
+  area.innerHTML = "";
+
+
+  top9.forEach((member, index) => {
+
+    const card =
+      document.createElement("div");
+
+
+    card.className =
+      "result-card";
+
+
+    const image =
+      member.image ||
+      "https://placehold.co/600x800/f7dce8/777?text="
+      + encodeURIComponent(member.name);
+
+
+    card.innerHTML = `
+
+      <img src="${image}">
+
+      <div class="rank">
+        ${index + 1}位
+      </div>
+
+      <div class="result-name">
+        ${member.name}
+      </div>
+
+    `;
+
+
+    area.appendChild(card);
+
+  });
+
+
+  makeType(top9);
+
+}
+
+
+/* ==================================================
+   好き顔タイプ
+================================================== */
+
+function makeType(top9) {
+
+  const types = [
+
+    "王道キラキラ顔タイプ ✨",
+
+    "色気たっぷり顔タイプ 🖤",
+
+    "少年感強め顔タイプ 🐶",
+
+    "塩顔・透明感タイプ 🤍",
+
+    "かわいい顔タイプ 🎀",
+
+    "大人っぽい顔タイプ 🥀"
+
+  ];
+
+
+  const randomType =
+    types[Math.floor(Math.random() * types.length)];
+
+
+  document.getElementById("typeName")
+    .innerText = randomType;
+
+}
+
+
+/* ==================================================
+   Xシェア
+================================================== */
+
+function shareX() {
+
+  const text =
+    "ジャニーズ好き顔選手権やったら、私の好き顔TOP9これだったｗｗｗ";
+
+  const url =
+    "https://twitter.com/intent/tweet?text="
+    + encodeURIComponent(text);
+
+
+  window.open(url, "_blank");
+
+}
+
+
+/* ==================================================
+   もう一回
+================================================== */
+
+function restart() {
+
+  document.getElementById("result").style.display = "none";
+
+  document.getElementById("start").style.display = "block";
+
+}
+
+</script>
+
+</body>
+</html>
