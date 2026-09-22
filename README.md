@@ -1,2 +1,2 @@
-# charo
+sukigao-championship
 ジャニーズ好き顔選手権
